@@ -18,10 +18,10 @@ https://gourds.site/bar2.json
 Mac下编译
 ```bash
 #运行环境是mac
-go build -ldflags "-X version.Version=1.0.0" -o ./hwCDNManager.mac
+go build -ldflags "-X github.com/gourds/hw_cdn_refresh/version.Version=2.0.0" -o ./hwCDNManager.mac
 #运行环境是linux
-CGO_ENABLED=0  GOOS=linux  GOARCH=amd64 go build -ldflags "-X version.Version=1.0.0" -o ./hwCDNManager.linux
+CGO_ENABLED=0  GOOS=linux  GOARCH=amd64 go build -ldflags "-X github.com/gourds/hw_cdn_refresh/version.Version=2.0.0" -o ./hwCDNManager.linux
 ```
 
 TODO
-- [ ] 编译指定版本
+- [x] 编译指定版本号
