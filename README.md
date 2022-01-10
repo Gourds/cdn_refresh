@@ -1,6 +1,8 @@
 
+华为CDN刷新及预热工具
 
-- 默认 -t 为Refresh
+使用
+>- 默认 -t 为Refresh
 
 ```bash
 ./hwCDNManager -i xxxx -k xxxx  -r urls.txt  -p xxxx
