@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/gourds/hw_cdn_refresh/version"
+	"github.com/gourds/cdn_refresh/version"
 	"github.com/urfave/cli"
 	"github.com/wonderivan/logger"
 	"os"
@@ -9,7 +9,7 @@ import (
 
 func cliConfig() {
 	app := &cli.App{
-		Name:    "hw_cnd_refresh",
+		Name:    "cdn_refresh",
 		Usage:   "refresh CDN",
 		Version: version.GetVersion(),
 		Author:  version.Author,
@@ -59,6 +59,12 @@ func cliConfig() {
 				Value:       "",
 				Usage:       "ProjectID",
 				Destination: &InputConfig.ProjectId,
+			},
+			cli.StringFlag{
+				Name:		 "Platform",
+				Value:       "HuaWei",
+				Usage: 	     "Platform",
+				Destination: &InputConfig.Platform,
 			},
 		},
 	}

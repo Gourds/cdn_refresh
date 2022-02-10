@@ -1,4 +1,4 @@
-module github.com/gourds/hw_cdn_refresh
+module github.com/gourds/cdn_refresh
 
 go 1.17
 

@@ -1,8 +1,9 @@
 package providers
 
 import (
-	"github.com/gourds/hw_cdn_refresh/config"
+	"github.com/gourds/cdn_refresh/config"
 	cdn "github.com/huaweicloud/huaweicloud-sdk-go-v3/services/cdn/v1"
+	"github.com/wonderivan/logger"
 )
 
 
@@ -14,13 +15,33 @@ type CDNManager interface {
 
 type SessionType struct {
 	huawei *cdn.CdnClient
+	aliyun string
+	baishan string
 }
 
 type HuaWei struct {
 	config.Config
 }
 
+type AliYun struct {
+	config.Config
+}
+
+type BaiShan struct {
+	config.Config
+}
+
 func GetConfig() (data CDNManager) {
-	data = &HuaWei{config.InputConfig}
+	logger.Info("Now Use Platform: %v", config.InputConfig.Platform)
+	switch config.InputConfig.Platform {
+	case "HuaWei":
+		data = &HuaWei{config.InputConfig}
+	case "AliYun":
+		data = &AliYun{config.InputConfig}
+	case "BaiShan":
+		data = &BaiShan{config.InputConfig}
+	default:
+		data = &HuaWei{config.InputConfig}
+	}
 	return
 }

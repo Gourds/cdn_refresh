@@ -1,7 +1,7 @@
 package providers
 
 import (
-	"github.com/gourds/hw_cdn_refresh/config"
+	"github.com/gourds/cdn_refresh/config"
 	"github.com/huaweicloud/huaweicloud-sdk-go-v3/core/auth/global"
 	cdn "github.com/huaweicloud/huaweicloud-sdk-go-v3/services/cdn/v1"
 	"github.com/huaweicloud/huaweicloud-sdk-go-v3/services/cdn/v1/model"
@@ -25,19 +25,22 @@ func (c *HuaWei)Session() (SessionType,error){
 func (c *HuaWei)Refresh(client SessionType) (err error){
 
 	request := &model.CreateRefreshTasksRequest{}
+	typeRefreshTaskRefreshTaskRequestBody:= model.GetRefreshTaskRequestBodyTypeEnum().FILE
 	enterpriseProjectIdRequest:= c.ProjectId
 	request.EnterpriseProjectId = &enterpriseProjectIdRequest
 	var listUrlsRefreshTask = config.UrlsList
 	refreshTaskbody := &model.RefreshTaskRequestBody{
+		Type: &typeRefreshTaskRefreshTaskRequestBody,
 		Urls: listUrlsRefreshTask,
 	}
 	request.Body = &model.RefreshTaskRequest{
 		RefreshTask: refreshTaskbody,
 	}
+	logger.Info("HuaWei Refresh Job Beginning...")
 	response, err := client.huawei.CreateRefreshTasks(request)
 	if err == nil {
 		logger.Info("%+v", response)
-		logger.Info("刷新成功：%v", response.HttpStatusCode)
+		logger.Info("文件刷新成功：%v", response.HttpStatusCode)
 	} else {
 		logger.Error(err)
 	}

@@ -21,6 +21,7 @@ type Config struct {
 	ProjectId       string `toml:"ProjectId"`
 	EndPoint  		string `toml:"endPoint"`
 	Region          string `toml:"Region"`
+	Platform		string `toml:"Platform"`
 }
 
 func getUrlsFromFile(){

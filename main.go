@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/gourds/hw_cdn_refresh/config"
-	"github.com/gourds/hw_cdn_refresh/providers"
+	"github.com/gourds/cdn_refresh/config"
+	"github.com/gourds/cdn_refresh/providers"
 	"github.com/wonderivan/logger"
 )
 
